@@ -7,7 +7,7 @@ using BankLibrary;
 
 namespace BankLibrary
 {
-    class KontoPlus : Konto
+    public class KontoPlus : Konto
     {
         private decimal jednorazowyLimitDebetowy;
         private bool wykorzystanyLimit = false;
