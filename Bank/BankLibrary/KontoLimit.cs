@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankLibrary
 {
-    class KontoLimit
+    public  class KontoLimit
     {
         private Konto konto;
         private decimal jednorazowyLimitDebetowy;
