@@ -225,7 +225,79 @@ namespace BankLibrary
             Console.WriteLine(new string('-', 90));
             Console.ResetColor();
 
+            // Konto Limit (limit 100 zł)
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("  *** WITAMY W SYSTEMIE BANKOWYM *** ");
+            Console.WriteLine("*** SYMULACJA DZIAŁANIA KONTA LIMIT ***\n");
+            Console.ResetColor();
 
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("+ Otwarcie konta plus (limit 100 zł): ");
+            KontoPlus kontoLimit = new KontoPlus("Vlad Vesnij", 500, 100);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine($"[ Konto klienta: {kontoLimit.Nazwa} | Bilans: {kontoLimit.Bilans} zł | Limit: {kontoLimit.LimitDebetowy} zł | Stan konta(zablokowane): {kontoLimit.Zablokowane} ]\n");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("*** - Wypłata 500 zł ***");
+            kontoLimit.Wypłata(500);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine($"[ Konto klienta: {kontoLimit.Nazwa} | Nowy bilans: {kontoLimit.Bilans} zł | Limit: {kontoPlus.LimitDebetowy} zł | Stan konta(zablokowane): {kontoLimit.Zablokowane} ]\n");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("*** - Wypłata 200 zł ***");
+            Console.ResetColor();
+            try
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Próba wypłaty 200 zł...");
+                Console.ResetColor();
+                kontoLimit.Wypłata(200);
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Błąd: {ex.Message}!");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine($"[ Konto klienta: {kontoLimit.Nazwa}  | Bilans:  {kontoLimit.Bilans} zł | Limit: {kontoLimit.LimitDebetowy} zł | Stan konta(zablokowane): {kontoLimit.Zablokowane} ]\n");
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("*** + Wpłata 150 zł ***");
+                Console.ResetColor();
+                kontoLimit.Wpłata(150);
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine($"[ Konto klienta: {kontoLimit.Nazwa} | Bilans: {kontoLimit.Bilans} zł | Limit: {kontoLimit.LimitDebetowy} zł | Stan konta(zablokowane): {kontoLimit.Zablokowane} ]\n");
+                Console.ResetColor();
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("*** Blokowanie konta limit ***");
+                kontoLimit.BlokujKonto();
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine($"[ Konto klienta: {kontoLimit.Nazwa}  | Bilans:  {kontoLimit.Bilans}  zł | Limit:  {kontoLimit.LimitDebetowy}  zł | Stan konta(zablokowane):  {kontoLimit.Zablokowane} ]\n");
+                Console.ResetColor();
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("***Odblokowanie konta limit ***");
+                kontoLimit.OdblokujKonto();
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine($"[ Konto klienta: {kontoLimit.Nazwa} | Bilans: {kontoLimit.Bilans} zł | Limit: {kontoPlus.LimitDebetowy} zł | Stan konta(zablokowane): {kontoLimit.Zablokowane} ]\n");
+                Console.ResetColor();
+
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("*** SYMULACJA DZIAŁANIA KONTA LIMIT ZAKOŃCZONA ***");
+                Console.WriteLine(new string('-', 90));
+                Console.ResetColor();
+
+            }
+        }
+    }
+}
 
 
         }
